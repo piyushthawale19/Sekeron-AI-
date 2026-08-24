@@ -24,13 +24,34 @@ const users = [
   { id: 'user_demo_01', name: 'Producer Demo User', email: 'demo@artiva.ai', role: 'Creative Director' }
 ];
 
-function sendJSON(res, statusCode, data) {
-  const allowedOrigin = process.env.CLIENT_ORIGIN || '*';
+function getCorsOrigin(req) {
+  const reqOrigin = req.headers.origin;
+  const clientEnvOrigin = (process.env.CLIENT_ORIGIN || '').replace(/\/+$/, '');
+
+  if (!reqOrigin) return '*';
+
+  // Normalize request origin by stripping trailing slashes
+  const normalizedReqOrigin = reqOrigin.replace(/\/+$/, '');
+
+  if (!process.env.CLIENT_ORIGIN || process.env.CLIENT_ORIGIN === '*') {
+    return reqOrigin;
+  }
+
+  if (normalizedReqOrigin === clientEnvOrigin) {
+    return reqOrigin;
+  }
+
+  return process.env.CLIENT_ORIGIN;
+}
+
+function sendJSON(req, res, statusCode, data) {
+  const allowedOrigin = getCorsOrigin(req);
   res.writeHead(statusCode, {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': allowedOrigin,
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Access-Control-Allow-Credentials': 'true'
   });
   res.end(JSON.stringify(data));
 }
@@ -42,15 +63,17 @@ const server = http.createServer((req, res) => {
 
   // Handle CORS Preflight
   if (method === 'OPTIONS') {
-    const allowedOrigin = process.env.CLIENT_ORIGIN || '*';
+    const allowedOrigin = getCorsOrigin(req);
     res.writeHead(204, {
       'Access-Control-Allow-Origin': allowedOrigin,
       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Credentials': 'true'
     });
     res.end();
     return;
   }
+
 
 
   // Static HTML File Serving
@@ -65,7 +88,7 @@ const server = http.createServer((req, res) => {
   // API Routes
   if (pathname === '/api/health' && method === 'GET') {
 
-    return sendJSON(res, 200, {
+    return sendJSON(req, res, 200, {
       status: 'ONLINE',
       system: 'ARTIVA INTELLIGENCE ENGINE',
       version: '1.0.0',
@@ -78,7 +101,7 @@ const server = http.createServer((req, res) => {
     let body = '';
     req.on('data', chunk => { body += chunk.toString(); });
     req.on('end', () => {
-      return sendJSON(res, 200, {
+      return sendJSON(req, res, 200, {
         message: 'Login successful.',
         token: 'artiva_jwt_token_demo_mode_2026',
         user: users[0]
@@ -92,7 +115,7 @@ const server = http.createServer((req, res) => {
     req.on('data', chunk => { body += chunk.toString(); });
     req.on('end', () => {
       const newUser = { id: `user_${Date.now()}`, name: 'New User', email: 'user@artiva.ai', role: 'Producer' };
-      return sendJSON(res, 201, {
+      return sendJSON(req, res, 201, {
         message: 'Account created successfully.',
         token: 'artiva_jwt_token_demo_mode_2026',
         user: newUser
@@ -121,7 +144,7 @@ const server = http.createServer((req, res) => {
       );
     }
 
-    return sendJSON(res, 200, {
+    return sendJSON(req, res, 200, {
       total: artists.length,
       artists: artists.map(a => ({
         id: a.id,
@@ -144,10 +167,10 @@ const server = http.createServer((req, res) => {
 
     const artist = IntelligenceService.getArtistById(id);
     if (!artist) {
-      return sendJSON(res, 404, { error: 'Artist record not found.' });
+      return sendJSON(req, res, 404, { error: 'Artist record not found.' });
     }
 
-    return sendJSON(res, 200, {
+    return sendJSON(req, res, 200, {
       artist,
       formattedRecord: IntelligenceService.formatArtistRecord(artist)
     });
@@ -155,7 +178,7 @@ const server = http.createServer((req, res) => {
 
   // BRIEFS API
   if (pathname === '/api/briefs' && method === 'GET') {
-    return sendJSON(res, 200, {
+    return sendJSON(req, res, 200, {
       total: dataset.briefs.length,
       briefs: RecommendationService.getAllBriefs()
     });
@@ -165,8 +188,8 @@ const server = http.createServer((req, res) => {
     const parts = pathname.split('/');
     const id = parts[3];
     const brief = RecommendationService.getBriefById(id);
-    if (!brief) return sendJSON(res, 404, { error: 'Brief not found.' });
-    return sendJSON(res, 200, { brief });
+    if (!brief) return sendJSON(req, res, 404, { error: 'Brief not found.' });
+    return sendJSON(req, res, 200, { brief });
   }
 
   // RECOMMENDATIONS API
@@ -177,15 +200,16 @@ const server = http.createServer((req, res) => {
 
     if (isUpdated) {
       const updated = RecommendationService.getUpdatedRecommendationsForBrief(briefId);
-      return sendJSON(res, 200, updated);
+      return sendJSON(req, res, 200, updated);
     } else {
       const recs = RecommendationService.getRecommendationsForBrief(briefId);
-      return sendJSON(res, 200, recs);
+      return sendJSON(req, res, 200, recs);
     }
   }
 
   // Fallback 404
-  return sendJSON(res, 404, { error: 'Endpoint not found.' });
+  return sendJSON(req, res, 404, { error: 'Endpoint not found.' });
+
 });
 
 let currentPort = PORT;
