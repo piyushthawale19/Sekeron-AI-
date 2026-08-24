@@ -15,11 +15,14 @@ export default function AuthModal({ onLoginSuccess }) {
     setError('');
     setLoading(true);
 
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
     try {
-      const endpoint = isLogin ? 'http://localhost:5000/api/auth/login' : 'http://localhost:5000/api/auth/register';
+      const endpoint = isLogin ? `${apiBase}/api/auth/login` : `${apiBase}/api/auth/register`;
       const payload = isLogin ? { email, password } : { name, email, password, role };
 
       const res = await fetch(endpoint, {
+
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

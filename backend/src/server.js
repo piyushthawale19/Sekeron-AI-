@@ -25,9 +25,10 @@ const users = [
 ];
 
 function sendJSON(res, statusCode, data) {
+  const allowedOrigin = process.env.CLIENT_ORIGIN || '*';
   res.writeHead(statusCode, {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': allowedOrigin,
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization'
   });
@@ -41,14 +42,16 @@ const server = http.createServer((req, res) => {
 
   // Handle CORS Preflight
   if (method === 'OPTIONS') {
+    const allowedOrigin = process.env.CLIENT_ORIGIN || '*';
     res.writeHead(204, {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': allowedOrigin,
       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, Authorization'
     });
     res.end();
     return;
   }
+
 
   // Static HTML File Serving
   if ((pathname === '/' || pathname === '/index.html') && method === 'GET') {

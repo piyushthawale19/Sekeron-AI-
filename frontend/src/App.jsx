@@ -22,12 +22,15 @@ export default function App() {
   const [recommendationData, setRecommendationData] = useState(null);
   const [updatedData, setUpdatedData] = useState(null);
 
+  const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
   useEffect(() => {
     // Initial fetch of artist directory & briefs from API
-    fetch('http://localhost:5000/api/artists')
+    fetch(`${API_BASE}/api/artists`)
       .then(res => res.json())
       .then(data => setArtists(data.artists || []))
       .catch(() => {
+
         // Fallback dataset if backend is loading
         setArtists([
           { id: "artist_01", name: "Elena Rostova", category: "Photographer", style: "High-Fashion & Editorial Studio Photography", portfolioStatus: "COMPLETE", confidence: "HIGH", claimsCount: 3, evidenceCount: 2, primaryCapability: "Studio Lighting & Multi-Light Setup" },
@@ -41,7 +44,7 @@ export default function App() {
         ]);
       });
 
-    fetch('http://localhost:5000/api/briefs')
+    fetch(`${API_BASE}/api/briefs`)
       .then(res => res.json())
       .then(data => setBriefs(data.briefs || []))
       .catch(() => {
@@ -52,32 +55,33 @@ export default function App() {
           { id: 'brief_04', title: 'Tech Conference Keynote & Speaker Highlight Reel', category: 'Video Editor' }
         ]);
       });
-  }, []);
+  }, [API_BASE]);
 
   // Fetch full details when artist is selected
   useEffect(() => {
     if (selectedArtistId) {
-      fetch(`http://localhost:5000/api/artists/${selectedArtistId}`)
+      fetch(`${API_BASE}/api/artists/${selectedArtistId}`)
         .then(res => res.json())
         .then(data => setSelectedArtistDetail(data.artist))
         .catch(() => {});
     }
-  }, [selectedArtistId]);
+  }, [selectedArtistId, API_BASE]);
 
   // Fetch recommendation and updated recommendation when briefId changes
   useEffect(() => {
     if (selectedBriefId) {
-      fetch(`http://localhost:5000/api/recommendations/${selectedBriefId}`)
+      fetch(`${API_BASE}/api/recommendations/${selectedBriefId}`)
         .then(res => res.json())
         .then(data => setRecommendationData(data))
         .catch(() => {});
 
-      fetch(`http://localhost:5000/api/recommendations/${selectedBriefId}/updated`)
+      fetch(`${API_BASE}/api/recommendations/${selectedBriefId}/updated`)
         .then(res => res.json())
         .then(data => setUpdatedData(data))
         .catch(() => {});
     }
-  }, [selectedBriefId]);
+  }, [selectedBriefId, API_BASE]);
+
 
   const handleSelectArtist = (id) => {
     setSelectedArtistId(id);
