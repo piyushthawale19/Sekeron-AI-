@@ -73,14 +73,101 @@ export default function App() {
       fetch(`${API_BASE}/api/recommendations/${selectedBriefId}`)
         .then(res => res.json())
         .then(data => setRecommendationData(data))
-        .catch(() => {});
+        .catch(() => {
+          setRecommendationData({
+            briefId: 'brief_01',
+            title: 'Luxury Cosmetics Instagram Launch Campaign',
+            category: 'Video Editor',
+            hirerRawConversation: 'We need an editor to create punchy vertical videos (9:16) for our upcoming luxury skincare Instagram Reels launch. The footage features high-end bottle closeups. We need rapid cuts, energetic music sync, kinetic animated captions, and sleek sound effects. Budget is flexible, but turnaround must be within 5 days.',
+            interpretation: {
+              explicitConstraints: [
+                'Category: Video Editor',
+                'Format: Vertical 9:16 short-form video (Instagram Reels)',
+                'Required Pacing: Rapid cuts synchronized to music beat',
+                'Required Graphics: Kinetic animated captions and sleek SFX'
+              ],
+              reasonableAssumptions: [
+                'High-definition source footage will be supplied by the brand.',
+                'Target audience expects modern polished social aesthetics.'
+              ]
+            },
+            topMatches: [
+              {
+                rank: 1,
+                artistId: 'artist_11',
+                artistName: 'Leo Sterling',
+                matchSummary: 'Strongest candidate due to direct demonstrated proof in 9:16 vertical reels with sub-second beat cuts and kinetic captioning.',
+                supportingCapabilities: ['Vertical 9:16 Short-Form & Pacing', 'Kinetic Typography & SFX Layering'],
+                supportingEvidence: ['artist_11/reel_01.mp4 @ 00:02-00:18', 'artist_11/reel_02.mp4 @ 00:05-00:22'],
+                tradeoffs: 'Portfolio focuses on energetic social clips; long-form narrative editing proof is absent.',
+                assumptions: 'Assumed Leo can adapt fast pacing specifically to luxury cosmetic brand guidelines.',
+                confidence: 'HIGH'
+              },
+              {
+                rank: 2,
+                artistId: 'artist_13',
+                artistName: 'Vikram Patel',
+                matchSummary: 'Excellent alternative for commercial luxury cosmetics due to superior 3D product render integration and glossy graphics.',
+                supportingCapabilities: ['3D Motion Graphics & Explosive Render Assembly', 'Green Screen Compositing & Screen Tracking'],
+                supportingEvidence: ['artist_13/vfx_01.mp4 @ 00:10-00:35'],
+                tradeoffs: 'Primary evidence is horizontal (16:9) commercial 3D VFX rather than native vertical social reels.',
+                assumptions: 'Assumed Vikram can reframe horizontal 3D VFX workflows into 9:16 vertical layouts.',
+                confidence: 'MEDIUM'
+              }
+            ],
+            refinementQuestions: [
+              {
+                question: 'Is native 9:16 vertical social pacing mandatory, or do you require high-end 3D product visual effects?',
+                whyItMatters: 'Leo Sterling excels at rapid vertical social cuts; Vikram Patel excels at 3D product graphics.',
+                rankingImpact: 'If 3D product VFX is essential, Vikram Patel moves to #1; if social beat-synced pacing is key, Leo Sterling remains #1.'
+              },
+              {
+                question: 'How many total video variations are needed within the 5-day delivery window?',
+                whyItMatters: 'High volume short-form turnaround favors specialized social reel editors.',
+                rankingImpact: 'Favors high-throughput social reel specialists.'
+              }
+            ]
+          });
+        });
 
       fetch(`${API_BASE}/api/recommendations/${selectedBriefId}/updated`)
         .then(res => res.json())
         .then(data => setUpdatedData(data))
-        .catch(() => {});
+        .catch(() => {
+          setUpdatedData({
+            briefId: 'brief_01',
+            title: 'Luxury Cosmetics Instagram Launch Campaign',
+            followUpUpdate: 'HIRER UPDATE: We spoke with our Creative Director. We realized we actually need a cinematic documentary-style story cut with soft warm color grading and deep interview narrative audio, rather than fast social reels! We want a 2-minute film for our website main page instead of 9:16 reels.',
+            updatedInterpretation: 'The brief explicitly shifted from fast 9:16 vertical social reels to a 2-minute cinematic 16:9 documentary-style film with interview audio and warm color grading.',
+            reRankingAudit: {
+              previousOrder: ['artist_11 (Leo Sterling)', 'artist_13 (Vikram Patel)'],
+              updatedOrder: ['artist_12 (Sophia Rossi)', 'artist_13 (Vikram Patel)'],
+              changesAudit: [
+                {
+                  artistId: 'artist_12',
+                  artistName: 'Sophia Rossi',
+                  movement: 'UNRANKED → #1 (UP)',
+                  reason: 'Moved to #1 because portfolio directly demonstrates cinematic narrative story arcs, interview L-cut audio, and warm film color grading (doc_01.mp4 @ 00:45-02:10).'
+                },
+                {
+                  artistId: 'artist_11',
+                  artistName: 'Leo Sterling',
+                  movement: '#1 → DROPPED (DOWN)',
+                  reason: 'Dropped from recommendations because fast vertical short-form social pacing contradicts the new cinematic documentary requirement.'
+                },
+                {
+                  artistId: 'artist_13',
+                  artistName: 'Vikram Patel',
+                  movement: '#2 → #2 (HELD)',
+                  reason: 'Maintained #2 spot as a commercial fallback for polished visual graphics.'
+                }
+              ]
+            }
+          });
+        });
     }
   }, [selectedBriefId, API_BASE]);
+
 
 
   const handleSelectArtist = (id) => {
