@@ -6,9 +6,11 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "node src/server.js",
+    "build": "node src/scripts/generateOutputs.js",
     "generate-data": "node src/scripts/generateOutputs.js",
     "verify": "node src/scripts/verify.js"
   },
+
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
