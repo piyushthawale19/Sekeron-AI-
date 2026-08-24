@@ -1,0 +1,254 @@
+[
+  {
+    "brief_id": "brief_01",
+    "title": "Luxury Cosmetics Instagram Launch Campaign",
+    "hirer_brief": "We need an editor to create punchy vertical videos (9:16) for our upcoming luxury skincare Instagram Reels launch. The footage features high-end bottle closeups. We need rapid cuts, energetic music sync, kinetic animated captions, and sleek sound effects. Budget is flexible, but turnaround must be within 5 days.",
+    "interpreted_requirements": {
+      "explicitConstraints": [
+        "Category: Video Editor",
+        "Format: Vertical 9:16 short-form video (Instagram Reels)",
+        "Required Pacing: Rapid cuts synchronized to music beat",
+        "Required Graphics: Kinetic animated captions and sleek SFX"
+      ],
+      "reasonableAssumptions": [
+        "High-definition source footage will be supplied by the brand.",
+        "Target audience expects modern polished social aesthetics."
+      ],
+      "contradictions": [],
+      "unknowns": [
+        "Exact final video count (e.g. 3 vs 10 reels) is unstated.",
+        "Color grading style preferences (warm vs cool luxury) are unstated."
+      ]
+    },
+    "top_matches": [
+      {
+        "rank": 1,
+        "artist_id": "artist_11",
+        "artist_name": "Leo Sterling",
+        "match_summary": "Strongest candidate due to direct demonstrated proof in 9:16 vertical reels with sub-second beat cuts and kinetic captioning.",
+        "supporting_capabilities": [
+          "Vertical 9:16 Short-Form & Pacing",
+          "Kinetic Typography & SFX Layering"
+        ],
+        "supporting_evidence": [
+          "artist_11/reel_01.mp4 @ 00:02-00:18",
+          "artist_11/reel_02.mp4 @ 00:05-00:22"
+        ],
+        "tradeoffs": "Portfolio focuses on energetic social clips; long-form narrative editing proof is absent.",
+        "assumptions": "Assumed Leo can adapt fast pacing specifically to luxury cosmetic brand guidelines.",
+        "confidence": "HIGH"
+      },
+      {
+        "rank": 2,
+        "artist_id": "artist_13",
+        "artist_name": "Vikram Patel",
+        "match_summary": "Excellent alternative for commercial luxury cosmetics due to superior 3D product render integration and glossy graphics.",
+        "supporting_capabilities": [
+          "3D Motion Graphics & Explosive Render Assembly",
+          "Green Screen Compositing & Screen Tracking"
+        ],
+        "supporting_evidence": [
+          "artist_13/vfx_01.mp4 @ 00:10-00:35"
+        ],
+        "tradeoffs": "Primary evidence is horizontal (16:9) commercial 3D VFX rather than native vertical social reels.",
+        "assumptions": "Assumed Vikram can reframe horizontal 3D VFX workflows into 9:16 vertical layouts.",
+        "confidence": "MEDIUM"
+      }
+    ],
+    "refinement_questions": [
+      {
+        "question": "Is native 9:16 vertical social pacing mandatory, or do you require high-end 3D product visual effects?",
+        "whyItMatters": "Leo Sterling excels at rapid vertical social cuts; Vikram Patel excels at 3D product graphics.",
+        "rankingImpact": "If 3D product VFX is essential, Vikram Patel moves to #1; if social beat-synced pacing is key, Leo Sterling remains #1."
+      },
+      {
+        "question": "How many total video variations are needed within the 5-day delivery window?",
+        "whyItMatters": "High volume short-form turnaround favors specialized social reel editors.",
+        "rankingImpact": "Favors high-throughput social reel specialists."
+      }
+    ]
+  },
+  {
+    "brief_id": "brief_02",
+    "title": "Indie Thriller Film Soundtrack & Ambient Audio",
+    "hirer_brief": "Looking for a composer for an upcoming psychological indie thriller film. We need atmospheric, tension-building music with dynamic orchestral strings, subtle cello, and atmospheric synth pads. No pop lyrics or upbeat drums.",
+    "interpreted_requirements": {
+      "explicitConstraints": [
+        "Category: Musician / Composer",
+        "Genre: Cinematic Thriller / Atmospheric Ambient Scoring",
+        "Instrumentation: Hybrid Orchestral Strings (Cello) & Synth Pads",
+        "Exclusions: No pop vocal tracks, no upbeat commercial drums"
+      ],
+      "reasonableAssumptions": [
+        "Score will be synced against locked video edit timemarkers.",
+        "High dynamic range stem delivery is expected."
+      ],
+      "contradictions": [],
+      "unknowns": [
+        "Exact runtime of total music score required is unstated."
+      ]
+    },
+    "top_matches": [
+      {
+        "rank": 1,
+        "artist_id": "artist_06",
+        "artist_name": "Julian Kael",
+        "match_summary": "Direct match with proven orchestral cello build and atmospheric ambient thriller soundscapes.",
+        "supporting_capabilities": [
+          "Orchestral Arrangement & Dynamic Build",
+          "Cinematic Ambient & Hybrid Synth Scoring"
+        ],
+        "supporting_evidence": [
+          "artist_06/audio_01.mp3 @ 00:15-01:10",
+          "artist_06/audio_02.mp3 @ 00:30-01:45"
+        ],
+        "tradeoffs": "Claims lead pop vocal production which is unverified in portfolio, though irrelevant for this score.",
+        "assumptions": "Assumed Julian can meet indie film budget constraints.",
+        "confidence": "HIGH"
+      },
+      {
+        "rank": 2,
+        "artist_id": "artist_08",
+        "artist_name": "Maya Lin",
+        "match_summary": "Alternative candidate for dark organic acoustic moodiness through acoustic string dexterity.",
+        "supporting_capabilities": [
+          "Acoustic Fingerstyle Guitar Accompaniment"
+        ],
+        "supporting_evidence": [
+          "artist_08/audio_01.mp3 @ 00:10-01:05"
+        ],
+        "tradeoffs": "Portfolio is primarily acoustic indie folk vocal songs rather than full orchestral film scores.",
+        "assumptions": "Assumed acoustic arrangements can be stripped into suspenseful instrumental textures.",
+        "confidence": "MEDIUM"
+      }
+    ],
+    "refinement_questions": [
+      {
+        "question": "Do you require full hybrid orchestral brass crescendos or strictly minimalist acoustic textures?",
+        "whyItMatters": "Julian Kael provides full dynamic orchestral range; Maya Lin provides intimate acoustic string textures.",
+        "rankingImpact": "Clarifies whether heavy symphonic tension is required."
+      }
+    ]
+  },
+  {
+    "brief_id": "brief_03",
+    "title": "High-End E-Commerce Cosmetics Product Campaign",
+    "hirer_brief": "We need a product photographer to shoot our luxury perfume and serum line. Shots will be used on our website and digital ads. We need macro shots, perfect glass reflection control, and crisp soft lighting.",
+    "interpreted_requirements": {
+      "explicitConstraints": [
+        "Category: Photographer",
+        "Subject: Cosmetic bottles & luxury glassware",
+        "Technical requirement: Macro glass reflection control and soft diffusion lighting"
+      ],
+      "reasonableAssumptions": [
+        "Products will be shipped directly to photographer's studio.",
+        "High-res retouched commercial TIFF/JPEG outputs required."
+      ],
+      "contradictions": [],
+      "unknowns": [
+        "Whether lifestyle model hand-holding shots are required alongside hero macro shots."
+      ]
+    },
+    "top_matches": [
+      {
+        "rank": 1,
+        "artist_id": "artist_03",
+        "artist_name": "Aria Thorne",
+        "match_summary": "Pristine match with direct evidence of macro perfume glass reflection control and soft light diffusion.",
+        "supporting_capabilities": [
+          "Macro Product & Glassware Reflection Control",
+          "Commercial E-commerce & Soft Diffusion"
+        ],
+        "supporting_evidence": [
+          "artist_03/img_01.jpg",
+          "artist_03/img_02.jpg"
+        ],
+        "tradeoffs": "Portfolio contains zero human portraiture shots if model hands are needed.",
+        "assumptions": "Assumed shoot is strictly tabletop studio product macro work.",
+        "confidence": "HIGH"
+      },
+      {
+        "rank": 2,
+        "artist_id": "artist_01",
+        "artist_name": "Elena Rostova",
+        "match_summary": "Strong secondary candidate if human models/fashion styling is introduced into the skincare campaign.",
+        "supporting_capabilities": [
+          "Studio Lighting & Multi-Light Setup",
+          "Editorial Portraiture & High Fashion"
+        ],
+        "supporting_evidence": [
+          "artist_01/img_01.jpg"
+        ],
+        "tradeoffs": "Focus is on high-fashion human editorial rather than dedicated macro glassware physics.",
+        "assumptions": "Assumed Elena's studio lighting mastery extends to micro product reflections.",
+        "confidence": "MEDIUM"
+      }
+    ],
+    "refinement_questions": [
+      {
+        "question": "Will the shoot feature human model hands/faces holding the cosmetics, or strictly standalone macro product hero shots?",
+        "whyItMatters": "Aria Thorne is unbeatable for macro standalone glass; Elena Rostova is ideal if fashion model staging is needed.",
+        "rankingImpact": "If models are involved, Elena Rostova moves up."
+      }
+    ]
+  },
+  {
+    "brief_id": "brief_04",
+    "title": "Tech Conference Keynote & Speaker Highlight Reel",
+    "hirer_brief": "We have raw multi-cam footage from our annual tech keynote. We need an editor who can handle multi-cam switching, normalize audio between speakers, and add polished corporate lower thirds.",
+    "interpreted_requirements": {
+      "explicitConstraints": [
+        "Category: Video Editor",
+        "Type: Corporate Multi-cam Tech Keynote Edit",
+        "Requirements: Multi-camera lip sync switching, audio normalization, corporate lower thirds"
+      ],
+      "reasonableAssumptions": [
+        "Multi-cam scratch audio tracks are provided for sync.",
+        "Corporate brand color palette guidelines will be supplied."
+      ],
+      "contradictions": [],
+      "unknowns": [
+        "Whether 3D graphic stage intros are needed."
+      ]
+    },
+    "top_matches": [
+      {
+        "rank": 1,
+        "artist_id": "artist_14",
+        "artist_name": "Hannah Wright",
+        "match_summary": "Direct match with explicit multi-cam keynote presentation switching and corporate lower thirds proof.",
+        "supporting_capabilities": [
+          "Multi-Camera Keynote Switching & Corporate Clean Lines"
+        ],
+        "supporting_evidence": [
+          "artist_14/corp_01.mp4 @ 00:30-01:50"
+        ],
+        "tradeoffs": "Standard corporate presentation style; lacks high-energy music video VFX.",
+        "assumptions": "Assumed client prioritizes clear presentation over aggressive stylistic cuts.",
+        "confidence": "HIGH"
+      },
+      {
+        "rank": 2,
+        "artist_id": "artist_12",
+        "artist_name": "Sophia Rossi",
+        "match_summary": "Solid alternative if narrative documentary speaker pacing is desired.",
+        "supporting_capabilities": [
+          "Narrative Arc & Interview Cutaway Storytelling"
+        ],
+        "supporting_evidence": [
+          "artist_12/doc_01.mp4 @ 00:45-02:10"
+        ],
+        "tradeoffs": "Specializes in documentary films rather than multi-cam keynote presentation layouts.",
+        "assumptions": "Assumed Sophia can execute multi-cam sync workflows.",
+        "confidence": "MEDIUM"
+      }
+    ],
+    "refinement_questions": [
+      {
+        "question": "Do you need rapid multi-camera presentation cut switching or documentary narrative speaker storytelling?",
+        "whyItMatters": "Hannah Wright is specialized in multi-cam presentation cuts; Sophia Rossi is specialized in story arcs.",
+        "rankingImpact": "Re-affirms choice based on keynote vs documentary goal."
+      }
+    ]
+  }
+]

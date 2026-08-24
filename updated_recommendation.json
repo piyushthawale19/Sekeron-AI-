@@ -1,0 +1,36 @@
+{
+  "brief_id": "brief_01",
+  "title": "Luxury Cosmetics Instagram Launch Campaign",
+  "follow_up_update_text": "HIRER UPDATE: We spoke with our Creative Director. We realized we actually need a cinematic documentary-style story cut with soft warm color grading and deep interview narrative audio, rather than fast social reels! We want a 2-minute film for our website main page instead of 9:16 reels.",
+  "updated_interpretation": "The brief explicitly shifted from fast 9:16 vertical social reels to a 2-minute cinematic 16:9 documentary-style film with interview audio and warm color grading.",
+  "re_ranking_comparison": {
+    "previous_ranking": [
+      "artist_11 (Leo Sterling)",
+      "artist_13 (Vikram Patel)"
+    ],
+    "updated_ranking": [
+      "artist_12 (Sophia Rossi)",
+      "artist_13 (Vikram Patel)"
+    ],
+    "audit_of_changes": [
+      {
+        "artistId": "artist_12",
+        "artistName": "Sophia Rossi",
+        "movement": "UNRANKED → #1 (UP)",
+        "reason": "Moved to #1 because portfolio directly demonstrates cinematic narrative story arcs, interview L-cut audio, and warm film color grading (doc_01.mp4 @ 00:45-02:10)."
+      },
+      {
+        "artistId": "artist_11",
+        "artistName": "Leo Sterling",
+        "movement": "#1 → DROPPED (DOWN)",
+        "reason": "Dropped from recommendations because fast vertical short-form social pacing contradicts the new cinematic documentary requirement."
+      },
+      {
+        "artistId": "artist_13",
+        "artistName": "Vikram Patel",
+        "movement": "#2 → #2 (HELD)",
+        "reason": "Maintained #2 spot as a commercial fallback for polished visual graphics."
+      }
+    ]
+  }
+}
